@@ -1,0 +1,111 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "totvs_language_debug",
+			"request": "launch",
+			"name": "TOTVS Language Debug",
+			"program": "${command:AskForProgramName}",
+			"cwb": "${workspaceFolder}",
+			"smartclientBin": "C://TOTVS12//Protheus//Protheus//bin//smartclient//smartclient.exe",
+			"isMultiSession": true,
+			"enableTableSync": true
+		}
+	],
+	"lastPrograms": [
+		{
+			"label": "U_Ex003"
+		},
+		{
+			"label": "U_Ex002"
+		},
+		{
+			"label": "U_Ex004"
+		},
+		{
+			"label": "U_Ex005"
+		},
+		{
+			"label": "U_Ex006"
+		},
+		{
+			"label": "U_Ex007"
+		},
+		{
+			"label": "U_Antecessor"
+		},
+		{
+			"label": "U_Ex008"
+		},
+		{
+			"label": "U_Ex009"
+		},
+		{
+			"label": "U_Ex010"
+		},
+		{
+			"label": "U_Ex011"
+		},
+		{
+			"label": "U_Ex012"
+		},
+		{
+			"label": "U_Ex014e015"
+		},
+		{
+			"label": "U_Ex018"
+		},
+		{
+			"label": "U_Ex019"
+		},
+		{
+			"label": "U_Ex020"
+		},
+		{
+			"label": "U_Ex021"
+		},
+		{
+			"label": "U_Ex022"
+		},
+		{
+			"label": "U_Ex023"
+		},
+		{
+			"label": "U_Ex029"
+		},
+		{
+			"label": "U_Ex024"
+		},
+		{
+			"label": "U_Ex025"
+		},
+		{
+			"label": "U_EX026"
+		},
+		{
+			"label": "U_EX028"
+		},
+		{
+			"label": "U_Ex030"
+		},
+		{
+			"label": "U_Ex031"
+		},
+		{
+			"label": "U_teste"
+		},
+		{
+			"label": "U_Ex033"
+		},
+		{
+			"label": "U_Ex034"
+		},
+		{
+			"label": "U_Ex035"
+		},
+		{
+			"label": "U_Ex036"
+		}
+	],
+	"lastProgramExecuted": "U_Ex036"
+}
