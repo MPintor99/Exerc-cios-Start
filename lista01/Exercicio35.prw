@@ -22,5 +22,5 @@ User Function Ex035()
     ENDDO
     nMedia := nSoma / nI
 
-    FwAlertSuccess('A média da idade das pessoas é: ' + cValToChar(nMedia))
+    FwAlertSuccess('A média da idade das pessoas é: ' + cValToChar(nMedia) + 'anos.')
 return
