@@ -18,6 +18,10 @@ User function Ex036()
             nResult := nResult * (nI-1)
     NEXT
 
-    FwAlertSuccess('O resultado de ' + cValToChar(nNum) + '! é: ' + cValToChar(nResult))
+    if nNum == 0
+        FwAlertSuccess('O resultado de ' + cValToChar(nNum) + '! é: 1')
+    else 
+        FwAlertSuccess('O resultado de ' + cValToChar(nNum) + '! é: ' + cValToChar(nResult))
+    endif
 
 RETURN
