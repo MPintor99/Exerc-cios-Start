@@ -16,7 +16,7 @@ User Function L3Ex04SQL()
 
     PREPARE ENVIRONMENT EMPRESA '99' FILIAL '01' TABLES 'SB1' MODULO 'FAT'
 
-   cQuery := "SELECT " + CRLF
+    cQuery := "SELECT " + CRLF
     cQuery += "     B1_COD " + CRLF
     cQuery += "     ,B1_DESC " + CRLF
     cQuery += "     ,B1_GRUPO " + CRLF
