@@ -1,13 +1,14 @@
-// 4 – Faça um SELECT na tabela SB1 que retorne
-// todos os produtos que pertencem ao grupo
-// “Películas”. Apresente a descrição desses
-// produtos através da função FwAlertInfo()
+// 5 – Faça um SELECT na tabela SB1 que retorne
+// todos os produtos cadastrados e apresente os
+// códigos e descrições de todos em uma mensagem.
+// Mas atenção, os itens devem ser apresentados em
+// ordem de descrição decrescente (Z-A)
 
 #INCLUDE 'TOTVS.CH'
 #INCLUDE 'TBICONN.CH'
 #INCLUDE 'TOPCONN.CH'
 
-User Function L3Ex04SQL()
+User Function L3Ex05SQL()
     Local aArea   := GetArea()
     Local cAlias  := GetNextAlias()
     Local cQuery  := ''
@@ -16,13 +17,12 @@ User Function L3Ex04SQL()
 
     PREPARE ENVIRONMENT EMPRESA '99' FILIAL '01' TABLES 'SB1' MODULO 'FAT'
 
-   cQuery := "SELECT " + CRLF
+    cQuery := "SELECT " + CRLF
     cQuery += "     B1_COD " + CRLF
     cQuery += "     ,B1_DESC " + CRLF
-    cQuery += "     ,B1_GRUPO " + CRLF
     cQuery += "FROM " + RetSqlName('SB1') +  CRLF
-    cQuery += "WHERE "
-    cQuery += "     B1_GRUPO = 'G002'"
+    cQuery += " ORDER BY B1_DESC ASC "
+
     
     TCQUERY cQuery ALIAS &(cAlias) NEW
 
@@ -32,7 +32,6 @@ User Function L3Ex04SQL()
 
         cMsg += 'Código: ' + &(cAlias)->(B1_COD) + CRLF
         cMsg += 'Descrição: ' + &(cAlias)->(B1_DESC) + CRLF
-        cMsg += 'Grupo: ' + &(cAlias)->(B1_GRUPO) + CRLF
         cMsg += '--------------------' + CRLF + CRLF
 
         nCont++
