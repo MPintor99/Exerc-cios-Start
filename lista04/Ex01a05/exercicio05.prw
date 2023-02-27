@@ -4,7 +4,7 @@
 
 #INCLUDE 'TOTVS.CH'
 
-User Function Ex5L4()
+User Function L04Ex05()
     local oDlg  := NIL 
     local cTitle    := 'Aluguel Veículo' 
     local cAsk1     := 'KM Percorridos: ' 

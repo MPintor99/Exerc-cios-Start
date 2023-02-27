@@ -7,7 +7,7 @@
 
 #INCLUDE 'TOTVS.CH'
 
-User Function Ex9L4()
+User Function L04Ex09()
     local oDlg  := NIL 
     local cTitle    := 'Taxa Metabólica Basal (TMB)' 
     local cAsk1     := 'Sexo (F ou M): ' 

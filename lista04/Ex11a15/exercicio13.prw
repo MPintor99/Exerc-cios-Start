@@ -5,7 +5,7 @@
 #INCLUDE 'TBICONN.CH'
 #INCLUDE 'TOPCONN.CH'
 
-User Function Ex13L4()
+User Function L04Ex13()
     local oDlg  := NIL 
     local cTitle    := 'Vendas do Produto' 
     local cAsk1     := 'Código: ' 
