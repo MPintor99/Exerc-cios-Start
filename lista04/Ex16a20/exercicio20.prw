@@ -10,7 +10,8 @@ User Function CadZZE()
                         { 'Incluir' ,      'AxInclui' ,     0, 3 },;
                         { 'Alterar' ,      'AxAltera' ,     0, 4 },;
                         { 'Excluir' ,      'AxDeleta' ,     0, 5 },;
-                        { 'Alunos' ,       'U_CadZZE' ,     0, 6 }}
+                        { 'Alunos' ,       'U_CadZZS' ,     0, 6 },;
+                        { 'Legenda' ,      'U_Legend',      0, 7 }}
 
     DbSelectArea('ZZE')
     DbSetOrder(1)
