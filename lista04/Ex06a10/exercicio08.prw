@@ -45,7 +45,7 @@ Static Function IMC(nPeso, nAltura)
 
     If nIMC < 18.5
         FwAlertSuccess('IMC: ' + cValtoChar(nIMC) + CRLF +  ' Magreza - Obesidade (Grau): 0')
-    Elseif nIMC <= 24.9
+    Elseif nIMC <= 24.9 
         FwAlertSuccess('IMC: ' + cValtoChar(nIMC) + CRLF +  ' Normal - Obesidade (Grau): 0')
     Elseif nIMC <= 29.9
         FwAlertSuccess('IMC: ' + cValtoChar(nIMC) + CRLF +  ' Sobrepeso - Obesidade (Grau): I')
