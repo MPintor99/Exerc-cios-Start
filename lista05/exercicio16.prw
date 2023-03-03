@@ -12,7 +12,7 @@
 #DEFINE MEDIA_ALUNO 5
 
 User Function L05Ex16()
-    Local aArray := [4,5]
+    Local aArray := {{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0},{0,0,0,0,0}}
     Local nContador := 0
     Local nContador2 := 0
     Local cMSG := ''
@@ -25,7 +25,7 @@ User Function L05Ex16()
 
             Elseif nContador2 > 1 .and. nContador2 < 5
                 aArray[nContador, nContador2] := Val(FwInputBox('Digite aqui a ' + cValToChar(nContador2 - 1) + 'ª nota do aluno:'))
-                cMSG += cValToChar(nContador2) + 'ª nota: ' + cValToChar(aArray[nContador, nContador2])
+                cMSG += cValToChar(nContador2-1) + 'ª nota: ' + cValToChar(aArray[nContador, nContador2]) + CRLF
             Else
                 aArray[nContador, MEDIA_ALUNO] := ((aArray[nContador, NOTA1_ALUNO] + aArray[nContador, NOTA2_ALUNO] + aArray[nContador, NOTA3_ALUNO]) / 3)
                 cMSG += 'Media: ' +  cValToChar(aArray[nContador, MEDIA_ALUNO]) + CRLF + '-----------------------------------------------' + CRLF
