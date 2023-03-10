@@ -8,13 +8,12 @@
 
 #INCLUDE 'TOTVS.CH'
 
-User Function MTA120G2()
-    Local aArea     := GetArea()
-    Local aAreaSC7  := SC7->(GetArea())
+User Function MTA410I()
+    Local lRet := .T.
+    Local nPosQuant := Ascan(Aheader, {|x| Alltrim(x[2]) == 'C6_DESCRI'})
 
-    //Atualiza a descrição, com a variável pública criada no ponto de entrada MT120TEL
-    SC7->C7_DESCRI := 'Inc. PE ' + Alltrim(SC7->C7_DESCRI)
+    If acols[n][nPosQuant] != 'Inc. Pe - '
+        SC6->C6_DESCRI := ALLTRIM('Inc. PE - ' + SC6->C6_DESCRI)
+    Endif
      
-    RestArea(aArea)
-    RestArea(aAreaSC7)
-Return
+Return lRet

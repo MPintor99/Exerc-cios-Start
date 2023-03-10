@@ -7,5 +7,5 @@
 // ordenação é feita pelo Número do Pedido.
 
 User Function A120FILT() 
-    Local nNewORderSC7 := 3//Codigo do usuario alterando a ordem do SC7 
+    Local nNewORderSC7 := 3//Índice alterando a posição da SC7
 Return (nNewOrderSC7)

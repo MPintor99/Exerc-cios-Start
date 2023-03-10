@@ -3,7 +3,7 @@
 User Function ValTipEn()
     Local aArea     := GetArea()
     Local lRet      := .T.
-    Local _nPosTES  := aScan(aHeader,{|x| Alltrim(x[2]) == "C7_TES"     })
+    Local _nPosTES  := aScan(aHeader,{|x| Alltrim(x[2]) == "C7_TES"})
 
     DO CASE
         CASE Empty(aCols[n,_nPosTES])

@@ -37,6 +37,9 @@ User Function CUSTOMERVENDOR()
     Local cIdPonto := ""
     Local cIdModel := ""
     Local lIsGrid := .F.
+    Local cNum := ''
+
+    cNum := StrZero(Randomize(1, 10), 2)
 
     If aParam <> NIL
         oObj := aParam[1]
@@ -45,6 +48,7 @@ User Function CUSTOMERVENDOR()
         lIsGrid := (Len(aParam) > 3)
 
         If cIdPonto == "MODELVLDACTIVE"
+
             if INCLUI
                 FwAlertInfo("Seja Bem vindo(a) ao Cadastro de Fornecedores!", "Bem vindo!")
 
@@ -54,10 +58,8 @@ User Function CUSTOMERVENDOR()
                 FwAlertInfo("Você está prestes a excluir o cadastro do fornecedor " + SA2->A2_NOME, 'Excluir')
             endif
 
-        Elseif cIdPonto == "FORMPRE"
-               M->A2_LOJA := STRZERO(RANDOMIZE(1, 10),2)
-
         Elseif cIdPonto == "MODELPOS"
+
             IF Vazio(M->A2_PAIS)
                 Help(NIL, NIL, "País não informado", NIL, "Campo país em branco", 1, 0, NIL, NIL, NIL, NIL, NIL, {"Preencha o campo país."})
                 xRet := .F.
@@ -72,6 +74,9 @@ User Function CUSTOMERVENDOR()
 
         ElseIf cIdPonto == "BUTTONBAR"
             xRet := {{"Cad. Produto", "NOVO", {||U_BotCadPro()}}}
+            oObj:GetModel("SA2MASTER"):LoadValue("A2_LOJA", cNum)
+            oView := FwViewActive()
+            oView:Refresh()
             
         Endif
     Endif
