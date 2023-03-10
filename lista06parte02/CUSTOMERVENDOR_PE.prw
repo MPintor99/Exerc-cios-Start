@@ -17,6 +17,22 @@
 // O número da loja deverá ser gerado
 // automaticamente e estar entre 01 e 09
 
+// 8 – Cri uma rotina que apresentará mensagens
+// diferentes em cada uma das seguintes situações
+// dos Cadastros de Fornecedores:
+
+// o Inclusão:
+// ? Mensagem: Seja Bem vindo(a) ao Cadastro de
+// Fornecedores!
+
+// o Alteração:
+// ? Mensagem: Você está prestes a alterar o
+// cadastro do fornecedor NomeFornecedor!
+
+// o Exclusão:
+// ? Mensagem: Cuidado, você está prestes a
+// excluir o fornecedor NomeFornecedor!
+
 // 9 – Implemente uma validação na exclusão de
 // Cadastros de Fornecedores. O sistema deverá
 // perguntar se o usuário confirma a exclusão do
