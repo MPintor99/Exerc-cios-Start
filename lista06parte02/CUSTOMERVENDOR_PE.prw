@@ -89,11 +89,13 @@ User Function CUSTOMERVENDOR()
             Endif
 
         ElseIf cIdPonto == "BUTTONBAR"
-            xRet := {{"Cad. Produto", "NOVO", {||U_BotCadPro()}}}
-            oObj:GetModel("SA2MASTER"):LoadValue("A2_LOJA", cNum)
-            oView := FwViewActive()
-            oView:Refresh()
-            
+
+            If INCLUI
+                xRet := {{"Cad. Produto", "NOVO", {||U_BotCadPro()}}}
+                oObj:GetModel("SA2MASTER"):LoadValue("A2_LOJA", cNum)
+                oView := FwViewActive()
+                oView:Refresh()
+            Endif
         Endif
     Endif
 Return xRet
