@@ -97,7 +97,7 @@ Static Function Imprime(oReport, cAlias)
 	oReport:EndPage()
 Return  
 
-//? Consulta SQL
+//? Consulta SQL.
 Static Function GeraQuery()
 	Local cQuery := ''
 	cQuery += 'SELECT C7_NUM, C7_EMISSAO, C7_FORNECE, C7_LOJA, C7_COND, C7_PRODUTO, C7_DESCRI, C7_QUANT, C7_PRECO, C7_TOTAL' + CRLF
