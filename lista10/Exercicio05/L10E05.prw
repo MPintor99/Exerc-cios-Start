@@ -13,6 +13,7 @@ User Function L10E05()
 	
  	oReport:PrintDialog()
 Return
+
 Static Function GeraReport()
 	Local cAlias	:= GetNextAlias() 
 	
@@ -25,18 +26,18 @@ Static Function GeraReport()
     //? Seção 1
     //! Pedido de Compra
 	TRCell():New(oSection1, 'C7_NUM', 'SC7', 'Nº Pedido', /*Picture*/, 8, /*Pixel*/, /*Code-Block*/, 'CENTER', .T., 'CENTER', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
-	TRCell():New(oSection1, 'C7_EMISSAO', 'SC7', 'Data de Emissao', /*Picture*/, 15, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
+	TRCell():New(oSection1, 'C7_EMISSAO', 'SC7', 'Data de Emissao', /*Picture*/, 14, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
 	TRCell():New(oSection1, 'C7_FORNECE', 'SC7', 'Fornecedor', /*Picture*/, 8, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
-	TRCell():New(oSection1, 'C7_LOJA', 'SC7', 'Loja', /*Picture*/, 12, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
-	TRCell():New(oSection1, 'C7_COND', 'SC7', 'Condicao de pagamento', /*Picture*/, 15, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
+	TRCell():New(oSection1, 'C7_LOJA', 'SC7', 'Loja', /*Picture*/, 5, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
+	TRCell():New(oSection1, 'C7_COND', 'SC7', 'Condicao de pagamento', /*Picture*/, 5, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
 	
     //? Seção 2
     //! Itens do Pedido
     TRCell():New(oSection2, 'C7_PRODUTO', 'SC7', 'Cod. Produto', /*Picture*/, 8, /*Pixel*/, /*Code-Block*/, 'CENTER', .T., 'CENTER', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
-	TRCell():New(oSection2, 'C7_DESCRI', 'SC7', 'Descricao do Produto', /*Picture*/, 15, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
-	TRCell():New(oSection2, 'C7_QUANT', 'SC7', 'Quantidade Vendida', /*Picture*/, 8, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
+	TRCell():New(oSection2, 'C7_DESCRI', 'SC7', 'Descricao do Produto', /*Picture*/, 30, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
+	TRCell():New(oSection2, 'C7_QUANT', 'SC7', 'Quantidade Vendida', /*Picture*/, 4, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
 	TRCell():New(oSection2, 'C7_PRECO', 'SC7', 'Valor Unitario', /*Picture*/, 10, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
-	TRCell():New(oSection2, 'C7_TOTAL', 'SC7', 'Valor Total', /*Picture*/, 15, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
+	TRCell():New(oSection2, 'C7_TOTAL', 'SC7', 'Valor Total', /*Picture*/, 10, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
 Return oReport
 
 Static Function Imprime(oReport, cAlias)
@@ -54,7 +55,7 @@ Static Function Imprime(oReport, cAlias)
 	oReport:SetTitle('Relatório de Pedidos de Compra')  
 
 	(cAlias)->(DBGoTop())
-    
+
 	while !(cAlias)->(EoF())
 		If (cAlias)->((C7_NUM)<>cPedAnterior)
 			oSection1:Init()
