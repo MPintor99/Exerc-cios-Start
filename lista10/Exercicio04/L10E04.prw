@@ -72,8 +72,8 @@ Static Function Imprime(oReport, cAlias)
 	oSection1:Cell('C7_COND'):SetValue((cAlias)->C7_COND)
     oSection1:PrintLine()
 
-	while !(cAlias)->(EoF())
-		if oReport:Cancel() // Cancela o loop, ou seja, o processo.
+	while (cAlias)->(!EoF())
+		if oReport:Cancel() // Cancela a impressão.
 			Exit
 		endif
         oSection2:Init()
