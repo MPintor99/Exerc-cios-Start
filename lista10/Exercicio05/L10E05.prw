@@ -45,6 +45,7 @@ Static Function Imprime(oReport, cAlias)
     Local oSection2     := oSection1:Section(1)  
 	Local nTotReg		:= 0
 	Local cQuery		:= GeraQuery()
+    Local cPedido       := '' //? Salva o número do pedido para não imprimir o mesmo muitas vezes
 
 	DBUseArea(.T., 'TOPCONN', TcGenQry(/*Compat*/, /*Compat*/, cQuery), cAlias, .T., .T.)
 
@@ -56,16 +57,22 @@ Static Function Imprime(oReport, cAlias)
 	(cAlias)->(DBGoTop())
 
 	while (cAlias)->(!EoF())
-		oSection1:Init()
-		oReport:StartPage()	
-		oSection1:Cell('C7_NUM'):SetValue((cAlias)->C7_NUM)
-		oSection1:Cell('C7_EMISSAO'):SetValue((cAlias)->C7_EMISSAO)	
-		oSection1:Cell('C7_FORNECE'):SetValue((cAlias)->C7_FORNECE)		
-		oSection1:Cell('C7_LOJA'):SetValue((cAlias)->C7_LOJA)	
-		oSection1:Cell('C7_COND'):SetValue((cAlias)->C7_COND)
+		If (cAlias)->((C7_NUM)<>cPedido)
+			oSection1:Init()
+			oReport:StartPage()	
+			oSection1:Cell('C7_NUM'):SetValue((cAlias)->C7_NUM)
+			oSection1:Cell('C7_EMISSAO'):SetValue((cAlias)->C7_EMISSAO)	
+			oSection1:Cell('C7_FORNECE'):SetValue((cAlias)->C7_FORNECE)		
+			oSection1:Cell('C7_LOJA'):SetValue((cAlias)->C7_LOJA)	
+			oSection1:Cell('C7_COND'):SetValue((cAlias)->C7_COND)
+			oSection1:PrintLine()
+			// oSection1:Finish()
 
-		oSection1:PrintLine()
-		oSection1:Finish()
+
+		Endif
+
+        cPedido := ((cAlias)->(C7_NUM))
+
         oSection2:Init()
 
         oSection2:Cell('C7_PRODUTO'):SetValue((cAlias)->C7_PRODUTO)
@@ -76,13 +83,16 @@ Static Function Imprime(oReport, cAlias)
             
         oSection2:PrintLine()
         oReport:IncMeter()
+        oSection2:Finish()	
+        oSection1:Finish()
 
 		(cAlias)->(DBSkip())
 	enddo   
 	
 	(cAlias)->(DBCloseArea())
+
     oSection2:Finish()	
-				
+    oSection1:Finish()
 	oReport:EndPage()
 Return  
 
