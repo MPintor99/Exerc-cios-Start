@@ -21,7 +21,7 @@ Static Function GeraReport()
 	Local oReport	:= TReport():New('TReport', 'Relatório de Pedidos de Compra',,{|oReport| Imprime(oReport, cAlias)}, 'Infomações de Pedidos de Compra',.F.,,,, .T., .T.)	
 	//? Instanciando a classe de Seção.
 	Local oSection1	:= TRSection():New(oReport, "Pedidos de Compra cadastrados",,,.F.,.T.)
-    Local oSection2 := TRSection():New(oSection1, "Itens do Pedido de Compra",,,.F.,.T.)		
+    	Local oSection2 := TRSection():New(oSection1, "Itens do Pedido de Compra",,,.F.,.T.)		
 	
     //? Seção 1
     //! Pedido de Compra
@@ -81,7 +81,7 @@ Static Function Imprime(oReport, cAlias)
 	enddo   
 	
 	(cAlias)->(DBCloseArea())
-    oSection2:Finish()	
+    	oSection2:Finish()	
 				
 	oReport:EndPage()
 Return  
