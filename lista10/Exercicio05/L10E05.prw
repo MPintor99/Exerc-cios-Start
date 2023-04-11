@@ -77,7 +77,7 @@ Static Function Imprime(oReport, cAlias)
 			oSection1:Init()
 			
 			oSection1:Cell('C7_NUM'):SetValue((cAlias)->C7_NUM)
-			oSection1:Cell('C7_EMISSAO'):SetValue((cAlias)->C7_EMISSAO)	
+			oSection1:Cell('C7_EMISSAO'):SetValue(DtoC(StoD((cAlias)->C7_EMISSAO)))
 			oSection1:Cell('C7_FORNECE'):SetValue((cAlias)->C7_FORNECE)		
 			oSection1:Cell('C7_LOJA'):SetValue((cAlias)->C7_LOJA)	
 			oSection1:Cell('C7_COND'):SetValue((cAlias)->C7_COND)
