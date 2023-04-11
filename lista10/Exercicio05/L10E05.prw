@@ -16,6 +16,7 @@ Return
 
 Static Function GeraReport()
 	Local cAlias	:= GetNextAlias() 
+	Local oBreak 
 	
 	//? Instanciando a classe de impressão.
 	Local oReport	:= TReport():New('TReport', 'Relatório de Pedidos de Compra',,{|oReport| Imprime(oReport, cAlias)}, 'Infomações de Pedidos de Compra',.F.,,,, .T., .T.)	
@@ -38,6 +39,13 @@ Static Function GeraReport()
 	TRCell():New(oSection2, 'C7_QUANT', 'SC7', 'Quantidade Vendida', /*Picture*/, 4, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
 	TRCell():New(oSection2, 'C7_PRECO', 'SC7', 'Valor Unitario', /*Picture*/, 10, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)	
 	TRCell():New(oSection2, 'C7_TOTAL', 'SC7', 'Valor Total', /*Picture*/, 10, /*Pixel*/, /*Code-Block*/, 'LEFT', .T., 'LEFT', /*Comp.*/,/*Espac. Entre Cel.*/, .T., /*Cor Fundo*/, /**Cor Fonte*/, .T.)
+
+    oBreak := TRBreak():New(oSection1, oSection1:Cell('C7_NUM'), , .T.)
+	
+	//? Faz a soma de todos os valores da coluna 'TOTAL'
+	TRFunction():New(oSection2:Cell('C7_TOTAL'), 'VALTOT', 'SUM', oBreak, 'VALOR TOTAL',,, .F., .F., .F.) 
+
+
 Return oReport
 
 Static Function Imprime(oReport, cAlias)
@@ -45,7 +53,7 @@ Static Function Imprime(oReport, cAlias)
     Local oSection2     := oSection1:Section(1)  
 	Local nTotReg		:= 0
 	Local cQuery		:= GeraQuery()
-    Local cPedido       := '' //? Salva o número do pedido para não imprimir o mesmo muitas vezes
+    Local cUltPed       := '' //? Salva o número do pedido para não imprimir o mesmo muitas vezes
 
 	DBUseArea(.T., 'TOPCONN', TcGenQry(/*Compat*/, /*Compat*/, cQuery), cAlias, .T., .T.)
 
@@ -53,27 +61,34 @@ Static Function Imprime(oReport, cAlias)
 
 	oReport:SetMeter(nTotReg)
 	oReport:SetTitle('Relatório de Pedidos de Compra')  
+	oReport:StartPage()	
 
 	(cAlias)->(DBGoTop())
 
 	while (cAlias)->(!EoF())
-		If (cAlias)->((C7_NUM)<>cPedido)
+
+		if AllTrim(cUltPed) <> AllTrim((cAlias)->(C7_NUM))
+				if !Empty(cUltPed)
+					oSection2:Finish() //? Finaliza Seção 2
+					oSection1:Finish() //? Finaliza Seção 1
+					oReport:EndPage()  //? Finaliza página caso queira uma página por pedido de compra
+				endif
+
 			oSection1:Init()
-			oReport:StartPage()	
+			
 			oSection1:Cell('C7_NUM'):SetValue((cAlias)->C7_NUM)
 			oSection1:Cell('C7_EMISSAO'):SetValue((cAlias)->C7_EMISSAO)	
 			oSection1:Cell('C7_FORNECE'):SetValue((cAlias)->C7_FORNECE)		
 			oSection1:Cell('C7_LOJA'):SetValue((cAlias)->C7_LOJA)	
 			oSection1:Cell('C7_COND'):SetValue((cAlias)->C7_COND)
-			oSection1:PrintLine()
-			// oSection1:Finish()
 
+			cUltPed := ((cAlias)->(C7_NUM))
+
+			oSection1:PrintLine()
+
+        	oSection2:Init()
 
 		Endif
-
-        cPedido := ((cAlias)->(C7_NUM))
-
-        oSection2:Init()
 
         oSection2:Cell('C7_PRODUTO'):SetValue((cAlias)->C7_PRODUTO)
         oSection2:Cell('C7_DESCRI'):SetValue((cAlias)->C7_DESCRI)	
@@ -83,16 +98,15 @@ Static Function Imprime(oReport, cAlias)
             
         oSection2:PrintLine()
         oReport:IncMeter()
-        oSection2:Finish()	
-        oSection1:Finish()
 
 		(cAlias)->(DBSkip())
 	enddo   
 	
+	oSection1:Finish()
+	oSection2:Finish()
+
 	(cAlias)->(DBCloseArea())
 
-    oSection2:Finish()	
-    oSection1:Finish()
 	oReport:EndPage()
 Return  
 
