@@ -210,7 +210,7 @@ Static Function CriaLog()
             oWriter:Close()
 
             if MsgYesNo('Arquivo gerado com sucesso! (' + cPasta + cArquivo + ')' + CRLF + 'Deseja abrir o arquivo?', 'Abrir?')
-                ShellExecute('OPEN', cArquivo + '.txt', '', cPasta, 1)
+                ShellExecute('OPEN', cArquivo + '.pdf', '', cPasta, 1)
             endif
         endif
     endif
